@@ -14,7 +14,7 @@ endif
 
 " Syntax definitions {{{1
 " Basic keywords {{{2
-syn keyword   rustConditional match if else
+syn keyword   rustConditional match if else break continue return yield
 syn keyword   rustRepeat loop while
 " `:syn match` must be used to prioritize highlighting `for` keyword.
 syn match     rustRepeat /\<for\>/
@@ -33,17 +33,17 @@ syn match rustExistentialContextual /\<existential\_s\+type/ transparent contain
 syn match     rustAssert      "\<assert\(\w\)*!" contained
 syn match     rustPanic       "\<panic\(\w\)*!" contained
 syn match     rustAsync       "\<async\%(\s\|\n\)\@="
-syn keyword   rustKeyword     break
+" syn keyword   rustKeyword     break
 syn keyword   rustKeyword     box
-syn keyword   rustKeyword     continue
+" syn keyword   rustKeyword     continue
 syn keyword   rustKeyword     crate
 syn keyword   rustKeyword     extern nextgroup=rustExternCrate,rustObsoleteExternMod skipwhite skipempty
 syn keyword   rustKeyword     fn nextgroup=rustFuncName skipwhite skipempty
 syn keyword   rustKeyword     impl let
 syn keyword   rustKeyword     macro
 syn keyword   rustKeyword     pub nextgroup=rustPubScope skipwhite skipempty
-syn keyword   rustKeyword     return
-syn keyword   rustKeyword     yield
+" syn keyword   rustKeyword     return
+" syn keyword   rustKeyword     yield
 syn keyword   rustSuper       super
 syn keyword   rustKeyword     where
 syn keyword   rustUnsafeKeyword unsafe
@@ -74,8 +74,9 @@ syn match rustMacroVariable "$\w\+"
 syn keyword   rustReservedKeyword become do priv typeof unsized abstract virtual final override
 
 " Built-in types {{{2
-syn keyword   rustType        isize usize char bool u8 u16 u32 u64 u128 f32
-syn keyword   rustType        f64 i8 i16 i32 i64 i128 str Self
+syn keyword   rustKeyword     isize usize char bool u8 u16 u32 u64 u128 f32
+syn keyword   rustKeyword     f64 i8 i16 i32 i64 i128 str
+syn keyword   rustType        Self
 
 " Things from the libstd v1 prelude (src/libstd/prelude/v1.rs) {{{2
 " This section is just straight transformation of the contents of the prelude,
@@ -313,9 +314,9 @@ hi def link rustCharacter     Character
 hi def link rustNumber        Number
 hi def link rustBoolean       Boolean
 hi def link rustEnum          rustType
-hi def link rustEnumVariant   rustConstant
+hi def link rustEnumVariant   Function
 hi def link rustConstant      Constant
-hi def link rustSelf          Constant
+hi def link rustSelf          Keyword
 hi def link rustFloat         Float
 hi def link rustArrowCharacter rustOperator
 hi def link rustOperator      Operator
